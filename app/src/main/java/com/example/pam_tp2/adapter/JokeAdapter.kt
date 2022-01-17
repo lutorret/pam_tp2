@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pam_tp2.R
-import com.example.pam_tp2.model.Joke
+import com.example.pam_tp2.model.Jokes
 
-class JokeAdapter(private var calls: List<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
+class JokeAdapter(private var dataset: List<Jokes>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
@@ -16,6 +16,12 @@ class JokeAdapter(private var calls: List<Joke>) : RecyclerView.Adapter<JokeAdap
         init {
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.textView)
+
+            view.setOnClickListener {
+                // TODO()
+                // dataset[this.absoluteAdaptaterPosition]
+
+            }
         }
     }
 
