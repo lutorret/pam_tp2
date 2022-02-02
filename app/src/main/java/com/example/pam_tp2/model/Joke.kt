@@ -9,6 +9,8 @@ data class Joke (
     val category: String,
     @SerializedName("type")
     val type: String,
+    @SerializedName("joke")
+    val joke: String,
     @SerializedName("setup")
     val setup: String,
     @SerializedName("delivery")
@@ -17,6 +19,6 @@ data class Joke (
 )
 {
     override fun toString(): String {
-        return "Joke(id=$id, category='$category', type='$type', setup='$setup', delivery='$delivery')"
+        return "Joke (id=$id, category='$category', type='$type', joke='$joke', setup='$setup', delivery='$delivery')"
     }
 }

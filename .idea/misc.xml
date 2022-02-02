@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19882246376811594" />
+        <entry key="app/src/main/res/layout/joke_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/joke_list_fragment.xml" value="0.128125" />
       </map>
     </option>
