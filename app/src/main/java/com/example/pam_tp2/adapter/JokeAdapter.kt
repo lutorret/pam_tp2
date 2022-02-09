@@ -1,34 +1,39 @@
 package com.example.pam_tp2.adapter
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pam_tp2.R
+import com.example.pam_tp2.activity.JokeActivity
 import com.example.pam_tp2.model.Joke
 
 class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val category: TextView
         val type: TextView
-        val setup: TextView
-        val delivery: TextView
-        val joke: TextView
 
         init {
             // Define click listener for the ViewHolder's View.
             category = view.findViewById(R.id.category)
             type = view.findViewById(R.id.type)
-            setup = view.findViewById(R.id.setup)
-            delivery = view.findViewById(R.id.delivery)
-            joke = view.findViewById(R.id.joke)
 
             view.setOnClickListener {
-                // TODO()
-                // dataset[this.absoluteAdaptaterPosition]
+                val i = this.adapterPosition
+                val context = category.context
 
+                val intent = Intent(context, JokeActivity::class.java).apply {
+                    putExtra("category", dataset[i].category)
+                    putExtra("type", dataset[i].type)
+                    putExtra("setup", dataset[i].setup)
+                    putExtra("delivery", dataset[i].delivery)
+                    putExtra("joke", dataset[i].joke)
+                }
+                context.startActivity(intent)
             }
         }
     }
@@ -45,15 +50,16 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
             holder.category.text = dataset[position].category
             holder.type.text = dataset[position].type
             if (dataset[position].type == "twopart") {
+                /*
                 holder.setup.text = dataset[position].setup
                 holder.delivery.text = dataset[position].delivery
-                holder.joke.visibility = View.INVISIBLE
+                holder.joke.visibility = View.INVISIBLE*/
             }
-            else {
+            else {/*
                 holder.joke.text = dataset[position].joke
                 holder.setup.visibility = View.INVISIBLE
                 holder.delivery.visibility = View.INVISIBLE
-            }
+            */}
         }
     }
 
@@ -65,4 +71,5 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         dataset.addAll(jokes)
         notifyDataSetChanged()
     }
+
 }

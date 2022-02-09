@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pam_tp2.R
 import com.example.pam_tp2.adapter.JokeAdapter
-import com.example.pam_tp2.model.Joke
 
 class JokeListFragment : Fragment() {
 
@@ -40,20 +38,11 @@ class JokeListFragment : Fragment() {
         val adapter = JokeAdapter(mutableListOf())
         rv?.adapter = adapter
 
-        /*
-        viewModel.liveData.observe(this) { list ->
-            if (list.isNotEmpty())
-                category.text = list.joinToString("\n")
-            else
-                category.text = "Chargement de la liste..."
-        }
-         */
-
         viewModel.liveData.observe(this) { list ->
             adapter.updateJokeList(list)
         }
-
         viewModel.getJokesFromRemote()
+
     }
 
 }

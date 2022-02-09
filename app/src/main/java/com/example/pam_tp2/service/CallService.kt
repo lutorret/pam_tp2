@@ -23,8 +23,6 @@ class CallService {
 
         client.close()
 
-        Log.v("JSON", json)
-
         return parse.parseJson(json)
     }
 
