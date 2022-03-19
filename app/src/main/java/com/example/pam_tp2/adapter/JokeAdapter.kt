@@ -59,6 +59,7 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
                 holder.icon.setImageResource(R.drawable.ic_baseline_question_answer_24)
             else
                 holder.icon.setImageResource(R.drawable.ic_baseline_speaker_notes_24)
+            holder.icon.set
         }
     }
 

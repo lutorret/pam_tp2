@@ -11,6 +11,15 @@ import com.example.pam_tp2.R
  */
 class JokeActivity : AppCompatActivity() {
 
+    val iconMap = mapOf<String, Int>(
+        "Programming" to R.drawable.ic_baseline_computer_24,
+        "Misc" to R.drawable.ic_baseline_miscellaneous_services_24,
+        "Dark" to R.drawable.ic_baseline_dark_mode_24,
+        "Pun" to R.drawable.ic_baseline_live_help_24,
+        "Spooky" to R.drawable.ic_baseline_outlet_24,
+        "Christmas" to R.drawable.ic_baseline_card_giftcard_24
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_joke)
