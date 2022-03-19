@@ -34,12 +34,16 @@ class JokeActivity : AppCompatActivity() {
         delivery.text = intent.extras?.get("delivery").toString()
         joke.text = intent.extras?.get("joke").toString()
 
-        if (intent.extras?.get("setup") == null) {
+        if (intent.extras?.get("joke") != null) {
             setup.visibility = View.INVISIBLE
             delivery.visibility = View.INVISIBLE
+            titleSetup.visibility = View.INVISIBLE
+            titleDelivery.visibility = View.INVISIBLE
         }
-        else
+        else {
             joke.visibility = View.INVISIBLE
+            titleJoke.visibility = View.INVISIBLE
+        }
     }
 
 }
