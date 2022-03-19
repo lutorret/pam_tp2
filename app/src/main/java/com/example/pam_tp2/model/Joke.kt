@@ -2,6 +2,9 @@ package com.example.pam_tp2.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Classe du modèle sérialisée en JSON représentant une Joke de l'API appelée
+ */
 data class Joke (
     @SerializedName("id")
     val id: Int,
