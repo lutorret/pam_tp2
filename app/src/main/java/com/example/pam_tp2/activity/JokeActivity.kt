@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.TextView
 import com.example.pam_tp2.R
 
+/**
+ * Représente l'écran affichant la blague dans son ensemble.
+ */
 class JokeActivity : AppCompatActivity() {
 
-    /**
-     *
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_joke)

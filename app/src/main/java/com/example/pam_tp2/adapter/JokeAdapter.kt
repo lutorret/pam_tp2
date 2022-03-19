@@ -18,10 +18,10 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         val type: TextView
 
         init {
-            // Define click listener for the ViewHolder's View.
             category = view.findViewById(R.id.category)
             type = view.findViewById(R.id.type)
 
+            // définit le changement d'écran lors d'un clique sur une blague de la liste
             view.setOnClickListener {
                 val i = this.adapterPosition
                 val context = category.context
@@ -45,21 +45,13 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         return ViewHolder(view)
     }
 
+    /**
+     * Lie les données du dataset au viewHolder
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (!dataset.isEmpty()) {
             holder.category.text = dataset[position].category
             holder.type.text = dataset[position].type
-            if (dataset[position].type == "twopart") {
-                /*
-                holder.setup.text = dataset[position].setup
-                holder.delivery.text = dataset[position].delivery
-                holder.joke.visibility = View.INVISIBLE*/
-            }
-            else {/*
-                holder.joke.text = dataset[position].joke
-                holder.setup.visibility = View.INVISIBLE
-                holder.delivery.visibility = View.INVISIBLE
-            */}
         }
     }
 
@@ -67,6 +59,9 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         return dataset.size
     }
 
+    /**
+     * Met à jour la liste de joke affichée et notifie les changements
+     */
     fun updateJokeList(jokes: List<Joke>) {
         dataset.addAll(jokes)
         notifyDataSetChanged()

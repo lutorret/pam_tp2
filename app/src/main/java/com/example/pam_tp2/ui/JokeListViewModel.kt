@@ -14,6 +14,9 @@ class JokeListViewModel : ViewModel() {
     private val callApi = CallService()
     val liveData: MutableLiveData<List<Joke>> = MutableLiveData<List<Joke>>(listOf())
 
+    /**
+     * Définit le liveData au résultat de l'appel à l'API, de manière asynchrone
+     */
     fun getJokesFromRemote() = viewModelScope.launch {
         liveData.value = callApi.callJokeAPI().jokes
     }

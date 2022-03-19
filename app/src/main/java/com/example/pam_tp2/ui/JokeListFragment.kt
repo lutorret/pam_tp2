@@ -19,8 +19,6 @@ class JokeListFragment : Fragment() {
         fun newInstance() = JokeListFragment()
     }
 
-    // private lateinit var viewModel: JokeListViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,10 +26,13 @@ class JokeListFragment : Fragment() {
         return inflater.inflate(R.layout.joke_list_fragment, container, false)
     }
 
+    /**
+     * Lie le viewModel au xml avec le LayoutManager et l'Adapter.
+     * Définit l'observateur du liveData.
+     * Appel la fonction asynchrone getJokesFromRemote récupérant les données de l'API
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // viewModel = ViewModelProvider(this).get(JokeListViewModel::class.java)
-        // TODO: Use the ViewModel
 
         val rv = view?.findViewById<RecyclerView>(R.id.jokes_rv)
         rv?.layoutManager = LinearLayoutManager(context)
@@ -42,7 +43,6 @@ class JokeListFragment : Fragment() {
             adapter.updateJokeList(list)
         }
         viewModel.getJokesFromRemote()
-
     }
 
 }
