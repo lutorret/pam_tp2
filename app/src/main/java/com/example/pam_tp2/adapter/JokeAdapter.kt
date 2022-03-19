@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pam_tp2.R
@@ -16,10 +17,12 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val category: TextView
         val type: TextView
+        val icon: ImageView
 
         init {
             category = view.findViewById(R.id.category)
             type = view.findViewById(R.id.type)
+            icon = view.findViewById(R.id.icon)
 
             // définit le changement d'écran lors d'un clique sur une blague de la liste
             view.setOnClickListener {
@@ -52,6 +55,10 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         if (!dataset.isEmpty()) {
             holder.category.text = dataset[position].category
             holder.type.text = dataset[position].type
+            if (holder.type.text == "twopart")
+                holder.icon.setImageResource(R.drawable.ic_baseline_question_answer_24)
+            else
+                holder.icon.setImageResource(R.drawable.ic_baseline_speaker_notes_24)
         }
     }
 
