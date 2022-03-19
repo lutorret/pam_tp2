@@ -1,7 +1,6 @@
 package com.example.pam_tp2.adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,11 @@ import com.example.pam_tp2.model.Joke
 
 class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
 
+    val typeIconMap = mapOf<String, Int>(
+        "twopart" to R.drawable.ic_baseline_question_answer_40,
+        "single" to R.drawable.ic_baseline_speaker_notes_40
+    )
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val category: TextView
         val type: TextView
@@ -22,7 +26,7 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         init {
             category = view.findViewById(R.id.category)
             type = view.findViewById(R.id.type)
-            icon = view.findViewById(R.id.icon)
+            icon = view.findViewById(R.id.typeIcon)
 
             // définit le changement d'écran lors d'un clique sur une blague de la liste
             view.setOnClickListener {
@@ -55,11 +59,7 @@ class JokeAdapter(private var dataset: MutableList<Joke>) : RecyclerView.Adapter
         if (!dataset.isEmpty()) {
             holder.category.text = dataset[position].category
             holder.type.text = dataset[position].type
-            if (holder.type.text == "twopart")
-                holder.icon.setImageResource(R.drawable.ic_baseline_question_answer_24)
-            else
-                holder.icon.setImageResource(R.drawable.ic_baseline_speaker_notes_24)
-            holder.icon.set
+            holder.icon.setImageResource(typeIconMap.getOrDefault(holder.type.text, 0))
         }
     }
 

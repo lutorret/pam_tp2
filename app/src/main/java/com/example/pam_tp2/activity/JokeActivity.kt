@@ -3,6 +3,7 @@ package com.example.pam_tp2.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.pam_tp2.R
 
@@ -11,13 +12,18 @@ import com.example.pam_tp2.R
  */
 class JokeActivity : AppCompatActivity() {
 
-    val iconMap = mapOf<String, Int>(
-        "Programming" to R.drawable.ic_baseline_computer_24,
-        "Misc" to R.drawable.ic_baseline_miscellaneous_services_24,
-        "Dark" to R.drawable.ic_baseline_dark_mode_24,
-        "Pun" to R.drawable.ic_baseline_live_help_24,
-        "Spooky" to R.drawable.ic_baseline_outlet_24,
-        "Christmas" to R.drawable.ic_baseline_card_giftcard_24
+    val categoryIconMap = mapOf<String, Int>(
+        "Programming" to R.drawable.ic_baseline_computer_40,
+        "Misc" to R.drawable.ic_baseline_miscellaneous_services_40,
+        "Dark" to R.drawable.ic_baseline_dark_mode_40,
+        "Pun" to R.drawable.ic_baseline_live_help_40,
+        "Spooky" to R.drawable.ic_baseline_outlet_40,
+        "Christmas" to R.drawable.ic_baseline_card_giftcard_40
+    )
+
+    val typeIconMap = mapOf<String, Int>(
+        "twopart" to R.drawable.ic_baseline_question_answer_40,
+        "single" to R.drawable.ic_baseline_speaker_notes_40
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +42,10 @@ class JokeActivity : AppCompatActivity() {
         val delivery: TextView = findViewById(R.id.delivery)
         val joke: TextView = findViewById(R.id.joke)
 
+        // Images
+        val typeIcon: ImageView = findViewById(R.id.typeIcon)
+        val categoryIcon: ImageView = findViewById(R.id.categoryIcon)
+
 
         category.text = intent.extras?.get("category").toString()
         type.text = intent.extras?.get("type").toString()
@@ -43,15 +53,18 @@ class JokeActivity : AppCompatActivity() {
         delivery.text = intent.extras?.get("delivery").toString()
         joke.text = intent.extras?.get("joke").toString()
 
+        typeIcon.setImageResource(typeIconMap.getOrDefault(type.text, 0))
+        categoryIcon.setImageResource(categoryIconMap.getOrDefault(category.text, 0))
+
         if (intent.extras?.get("joke") != null) {
-            setup.visibility = View.INVISIBLE
-            delivery.visibility = View.INVISIBLE
-            titleSetup.visibility = View.INVISIBLE
-            titleDelivery.visibility = View.INVISIBLE
+            setup.visibility = View.GONE
+            delivery.visibility = View.GONE
+            titleSetup.visibility = View.GONE
+            titleDelivery.visibility = View.GONE
         }
         else {
-            joke.visibility = View.INVISIBLE
-            titleJoke.visibility = View.INVISIBLE
+            joke.visibility = View.GONE
+            titleJoke.visibility = View.GONE
         }
     }
 
