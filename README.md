@@ -1,5 +1,11 @@
-## Passer des données d'un fragment à l'autre
-* Soluce 1 : use Bundle (sérialisation), recoit l'objet en paramètre du fragment dans la value de la clé "data" de la map
-* Soluce 2 : use Bundle (singleton), passe juste l'id
-* Soluce 3 : passe l'id, le 2e fragment refait un appel api avec l'id
-* Soluce 4 : bdd
+# Application TP2
+Application affichant une liste de blagues.
+Possibilité d'appuyer sur une blague pour la voir en entier et de retourner sur la liste.
+
+Utilise une RecyclerView pour la liste des blagues.
+utilise un ViewModel avec LiveData pour recupérer et afficher les éléments.
+Possède 2 activités :
+* MainActivity : contient un fragment qui contient la RecyclerView
+* JokeActivity : écran de blague détaillé
+
+API Android minimum : 30
