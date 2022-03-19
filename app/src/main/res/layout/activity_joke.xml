@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:paddingTop="50dp"
     android:orientation="vertical"
-    tools:context=".activity.JokeActivity">
+    tools:context=".activity.JokeActivity"
+    android:background="#EEEEEE">
 
     <LinearLayout
         android:layout_width="wrap_content"

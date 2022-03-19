@@ -13,9 +13,11 @@
         android:theme="@style/Theme.Pam_tp2">
         <activity
             android:name=".activity.JokeActivity"
+            android:label="Joke details"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
+            android:label="Joke list"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
